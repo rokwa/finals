@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" href="assets/icon.png">
+
+	<style>
+	* {
+		font-family: "Poppins";
+	}
+	
+	h1 {
+		color: #4e5766;
+	}
+	
+	body, html { 
+		margin: 0;
+		padding:0;
+	}
+
+	.wrapper {
+		height: 100vh;
+		overflow-x: hidden;
+		overflow-y: auto;
+		perspective: 1px;
+	}
+
+	.section {
+		position: relative;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		padding-bottom: 1vh;
+		padding-left: 5vw;
+		justify-content: left;
+		font-size: 6vw;
+		color: white;
+  
+		text-shadow:0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+	}
+
+	.parallax::after {
+		content: " ";
+		position: absolute; 
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: -10px;
+		transform: translateZ(-1px) scale(2);
+		background-size: cover;
+		z-index: -1;
+		background-image: url('assets/banner3.jpg');
+		background-position: 50% 30%;
+		background-repeat: no-repeat;
+	}
+	
+	#navbar {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		align-items: center !important;
+	}
+
+	li {
+		padding: 0px 15px 0px 15px;
+		text-align: center;
+		float: left;
+		align-items: center !important;
+	}
+
+	ul a {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+		display: block;
+		color: #262626 !important;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 500px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	ul a:hover:not(.active) {
+		border-radius: 500px;
+		background-color: #1D439C !important;
+		color: white !important;
+	}	
+
+	.active {
+		padding-left: 20px !important;
+		padding-right: 20px !important;
+		border-radius: 500px;
+		color: white !important;
+		background-color: #1D439C !important;
+	}
+	
+	.primary {
+		transition: 0.2s;
+		border-radius: 500px;
+		color: white;
+		background-color: #1D439C;
+		padding: 10px 30px 10px 30px;
+		font-size: 18px;
+		border: 2px solid #1D439C;
+	}
+	
+	.primary:hover {
+		transition: 0.2s;
+		border-radius: 500px;
+		color: #1D439C;
+		background-color: white;
+		padding: 10px 30px 10px 30px;
+		font-size: 18px;
+		border: 2px solid #1D439C;
+	}
+	
+	.white {
+		transition: 0.5s;
+		border-radius: 500px;
+		color: gray;
+		background-color: white;
+		padding: 10px 30px 10px 30px;
+		font-size: 18px;
+		border: 2px solid gray;
+	}
+	
+	.white:hover {
+		transition: 0.5s;
+		border-radius: 500px;
+		color: black;
+		background-color: white;
+		padding: 10px 30px 10px 30px;
+		font-size: 18px;
+		border: 2px solid black;
+	}
+	
+	.parallax-container {
+		height: 200px;
+    }
+
+	#wrapper2 {
+		height: 200vh;
+		perspective: 1px;
+		background-color: white;
+	}
+
+	#content_div{
+		padding: 40px 100px 40px 100px;
+	}
+	
+	#plan_card{
+		overflow: hidden;
+		position: relative;
+		background-position: center;
+		background-repeat:no-repeat;
+		background-color: red;
+		background-size: cover;
+		height: 90vh;
+		margin-bottom: 50px
+	}
+	
+	#plan_card_bg{
+		transition: 0.5s;
+		position: absolute;
+		background-position: center;
+		background-repeat:no-repeat;
+		background-color: red;
+		background-size: cover;
+		bottom: 20%;
+		height: 100%;
+		width: 100%;
+		transform: scale(1, 1);
+	}
+	
+	#plan_card:hover #plan_card_bg{
+		transform: scale(1.05, 1.05);
+	}
+	
+	#card{
+		transition: 0.5s;
+		position: absolute;
+		width: 100%;
+		height: auto;
+		bottom: -140px;
+		padding: 20px 40px 20px 40px;
+		text-align: left;
+		font-size: 20px;
+		background-color: white;
+	}
+	
+	#card a{
+		transition: 0.2s;
+		font-size: 13px;
+		color: gray !important;
+	}
+	
+	#card a:hover{
+		transition: 0.2s;
+		font-size: 13px;
+		color: black !important;
+	}
+	
+	#plan_card:hover #card{
+		transition: 0.5s;
+		bottom: 0;
+	}	
+	
+	.main_article{
+		box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+		border-radius: 1px;
+		height: 98%;
+		text-align: center;
+		font-size: 20px;
+		background-color: white;
+		color: #4e5766;
+		overflow: hidden;
+		transition: 0.5s;
+	}
+	
+	.main_article:hover{
+		transition: 0.5s;
+		transform: scale(1.01, 1.01);
+	}
+	
+	#ma_text{
+		padding: 50px;
+		text-align: left;
+	}
+	
+	.sub_article{
+		box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+		border-radius: 1px;
+		height: 140px;
+		text-align: left;
+		font-size: 20px;
+		overflow: hidden;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-left: 20px;
+		padding-right: 20px;
+		transition: 0.5s;
+	}
+	
+	.sub_article:hover{
+		transition: 0.5s;
+		transform: scale(1.01, 1.01);
+	}
+	
+	#footer{
+		background: linear-gradient( rgba(255, 255, 255, 2), rgba(100, 0, 0, 0.1) );
+		padding: 40px 100px 40px 100px;
+		height: auto;
+		font-size: 14px;
+	}
+	
+	#footer a{
+		text-decoration: none;
+		color: black !important;
+	}
+	</style>
+
+    <title>About Us - Globe</title>
+  </head>
+  <body>
+  
+	<div class="wrapper">
+  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: white !important; padding: 20px 60px 20px 60px !important; position: relative !important">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="" width="150">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul id="navbar" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <a class="nav-link" href="index.html">
+		<li class="nav-item">
+          Home
+        </li>
+		</a>
+		<a class="nav-link active" aria-current="page" href="about.html">
+        <li class="nav-item">
+          About Us
+        </li>
+		</a>
+        <a class="nav-link" href="plans.html">
+        <li class="nav-item">
+          Products & Services
+        </li>
+		</a>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+  
+	<div id="wrapper2">
+		<div id="content_div">
+			<div class="row">
+				<div class="col-md-3" style="height: auto !important; overflow:hidden; margin-bottom: 30px !important; background-image: url('assets/about.jpg'); background-size: cover; background-position: center">
+					<img src="assets/about.jpg" style="opacity: 0">
+				</div>
+					<!--<img src="assets/about.jpg" height="100%" style="display: block; height: 100%;">
+				</div>-->
+				<div class="col-md-9" style="padding: 0px 30px 0px 30px">
+					<h1 style="color: #1D439C !important"><b>About Us</b></h1>
+					
+					<h5 style="color: #1D439C !important">In everything we do, we treat people right to create a Globe of Good.</h5><br>
+
+					Globe is not simply a telco company. Globe is an organization that creates and enables digital life for the Philippines, so Filipinos can access choices, overcome challenges, and discover new ways to enjoy life. Globe achieves this through obsessing about its customers, digitally transforming businesses, building the network of choice, and empowering its people. Globe continues to provide meaningful support to all its stakeholders and creates wonderful channels to the digital lifestyle for Filipinos and all stakeholders.<br><br>
+
+					The strong thrust towards information and communications technology (ICT) infrastructure growth and network upgrades continued in 2019. Globe followed through with the building and deployment of cellular towers in the country throughout the year, spending roughly 45% of its annual income on telco infrastructure.<br><br>
+					
+					The company continues to believe that providing data services is crucial towards true progress. Globe will continue to push its network expansion to meet its customers’ growing demand for data. The company committed to spending P63 billion in capital expenditures in 2020, which includes spillover of CAPEX commitments from 2019. Globe is set to fulfill its commitment to provide two million homes with at least 10 Mbps connectivity by the end of 2020.
+				</div>
+			</div>
+		</div>
+		<div id="content_div">
+			<div class="row">
+				<div class="col-md-6" style="padding: 40px !important">
+					<h1 style="color: #1D439C !important"><i class="fa fa-users"></i><b> Our Vision</b></h1>
+					<h4>
+					We see a Philippines where families' dreams come true, businesses flourish, and the nation is admired.</h4>
+				</div>
+				<div class="col-md-6" style="padding: 40px !important">
+					<h1 style="color: #1D439C !important"><i class="fa fa-rocket"></i><b> Our Mission</b></h1>
+					<h4>
+					We create wonderful experiences for people to have choices, overcome challenges, and discover new ways to enjoy life.</h4>
+				</div>
+			</div>
+		</div>
+		<div id="content_div" style="background-color: #4398B5; padding: 0 !important">
+			<div class="row">
+				<div class="col-md-9" style="padding: 40px 100px 40px 100px !important; margin-bottom: 30px  !important; color: white  !important">
+			<h1 style="color: white !important"><b>Core Values</b></h1><br>
+			
+			<h3>The Globe Way</h3>
+			<h5>We treat people right to create a Globe of Good:</h5><br>
+			
+			<ul type="circle !important">
+			<h2><li>We put customers first.</li>
+			<li>We value people and together, we make a difference.</li>
+			<li>We act with integrity.</li>
+			<li>We care like an owner. We keep things simple.</li>
+			<li>We move fast. We are better every day.</li></h2>
+			</ul>
+				</div>
+				<div class="col-md-3" style="height: 100% !important; overflow:hidden; background-image: url('assets/globe-way.png'); background-size: cover; background-position: right">
+					<img src="assets/about.jpg" style="opacity: 0; height: 100%;">
+				</div>
+			</div>
+		</div>
+		
+		<div id="footer">
+			<div class="row">
+				<div class="col-md-1" style="height: auto">
+				</div>
+				<div class="col-md-3" style="height: auto; padding-right: 50px;">
+					<img src="assets/logo.png" alt="" width="150"><br><br>
+						<i class="fa fa-building"></i> The Globe Tower, 32nd Street corner 7th Avenue, Bonifacio Global City, Taguig
+				</div>
+				<div class="col-md-2" style="padding-top:60px; height: auto">
+					<h5><b>ABOUT US</b></h5>
+					<a href="https://shop.globe.com.ph/help">FAQS</a><br>
+					<a href="https://www.globe.com.ph/website-terms-conditions.html">Terms and Conditions</a><br>
+					<a href="https://www.globe.com.ph/privacy-policy">Privacy Policy</a><br>
+					<a href="https://www.globe.com.ph/aup">Fair Use Policy</a><br>
+					<a href="https://shop.globe.com.ph/shopmap">Sitemap</a>
+				</div>
+				<div class="col-md-1" style="padding-top:60px; height: auto">
+					<h5><b>PLANS</b></h5>
+					<a href="https://shop.globe.com.ph/devices/postpaid-phones">Postpaid Phones</a><br>
+					<a href="https://shop.globe.com.ph/apparel">Apparel</a><br>
+					<a href="https://shop.globe.com.ph/postpaid-plans">Postpaid Plans</a><br>
+					<a href="https://shop.globe.com.ph/broadband">Broadband Plans</a>
+				</div>
+				<div class="col-md-2" style="padding-top:60px; height: auto">
+					<h5><b>CONTACT US</b></h5>
+					<a href="https://www.globe.com.ph/help">Help and Support</a><br>
+					<a href="https://community.globe.com.ph/">Ask the Community</a><br>
+					<a href="https://www.globe.com.ph/store-locator">Store Locator</a><br>
+				</div>
+				<div class="col-md-2" style="padding-top:60px; height: auto">
+					<h5><b>Connect with us</b></h5>
+					ir@globetel.com.ph<br><br>
+					Tel (632) 7730-2000<br>
+					Fax (632) 7739-0072<br><br>
+					+63 (2) 8511 5200<br><br>
+					http://www.globe.com.ph
+				</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #1D439C; color: white; text-align: center; padding: 5px; font-size: 12px;">
+		© 2021 All Rights Reserved. Globe Inc.
+		</div>
+	</div>
+
+	</div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
